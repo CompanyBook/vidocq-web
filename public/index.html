@@ -64,10 +64,11 @@
             $('#status').html('<span class="label label-important">Error fetching data!</span>');
           }
         });
+
       }
 
       $(document).ready(function(){
-        update();
+        setInterval(update, 5000);
       });
     </script>
 	</body>
