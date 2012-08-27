@@ -27,36 +27,42 @@
 
     <script>
       function update() {
-        $.getJSON('index.json', function(services) {
-          content = '<tr><th>Name</th><th>Instances</th></tr>';
+        $.ajax({
+          url: 'index.json', 
+          success: function(services) {
+            content = '<tr><th>Name</th><th>Instances</th></tr>';
 
-          services.map(function(service) {
-            service.versions.map(function(version) {
-              summary = '';
-              var label = 'success';
+            services.map(function(service) {
+              service.versions.map(function(version) {
+                summary = '';
+                var label = 'success';
 
-              if (version.instances.length == 0) {
-                label = 'important';
-              }
-              else if (version.instances.length < 3) {
-                label = 'warning';
-              }
+                if (version.instances.length == 0) {
+                  label = 'important';
+                }
+                else if (version.instances.length < 3) {
+                  label = 'warning';
+                }
 
-              version.instances.map(function(instance) {
-                summary += instance.endpoint + '\n';
-              });
+                version.instances.map(function(instance) {
+                  summary += instance.endpoint + '\n';
+                });
 
-              content += '<tr><td>' + 
-                  service.name + ' ' + 
-                  version.number + '</td><td><span class="badge badge-' + label + '">' +
-                  version.instances.length + '</span></td></tr>';
-            })
-          });
+                content += '<tr><td>' + 
+                    service.name + ' ' + 
+                    version.number + '</td><td><span class="badge badge-' + label + '">' +
+                    version.instances.length + '</span></td></tr>';
+              })
+            });
 
-          $('#services').html(content);
-          $('#status').html('<span class="label label-inverse">' + 
-            new Date().toLocaleDateString() + ' ' +
-            new Date().toLocaleTimeString() + '</label>');
+            $('#services').html(content);
+            $('#status').html('<span class="label label-inverse">' + 
+              new Date().toLocaleDateString() + ' ' +
+              new Date().toLocaleTimeString() + '</label>');
+          },
+          error: function(xhr,status,error) {
+            $('#status').html('<span class="label label-important">Error fetching data!</span>');
+          }
         });
       }
 
