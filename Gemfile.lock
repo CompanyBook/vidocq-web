@@ -1,5 +1,5 @@
 GIT
-  remote: git@github.com:CompanyBook/vidocq.git
+  remote: git://github.com/CompanyBook/vidocq.git
   revision: 44022831a4cc21526c271fd775d2f65b27a4e2ac
   specs:
     vidocq (0.0.1)
