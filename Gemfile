@@ -1,4 +1,4 @@
 source :rubygems
 
 gem 'sinatra'
-gem 'vidocq', :git => 'git@github.com:CompanyBook/vidocq.git'
+gem 'vidocq', :git => 'git://github.com/CompanyBook/vidocq.git'
