@@ -16,7 +16,10 @@
 	</head>	
 	<body>
 		<div class="container">
+      <div id="status" style="float: right;"></div>
       <h1>Services</h1>
+      <p class="lead">This page shows an overview over the status
+      of all services that have registered as running in ZooKeeper.</p>
       <table id="services" class="table table-striped"></table>
 		</div>
 
@@ -51,6 +54,9 @@
           });
 
           $('#services').html(content);
+          $('#status').html('<span class="label label-inverse">' + 
+            new Date().toLocaleDateString() + ' ' +
+            new Date().toLocaleTimeString() + '</label>');
         });
       }
 
