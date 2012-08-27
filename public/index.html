@@ -30,6 +30,14 @@
           services.map(function(service) {
             service.versions.map(function(version) {
               summary = '';
+              var label = 'success';
+
+              if (version.instances.length == 0) {
+                label = 'important';
+              }
+              else if (version.instances.length < 3) {
+                label = 'warning';
+              }
 
               version.instances.map(function(instance) {
                 summary += instance.endpoint + '\n';
@@ -37,8 +45,8 @@
 
               content += '<tr><td>' + 
                   service.name + ' ' + 
-                  version.number + '</td><td>' + 
-                  version.instances.length + '</td></tr>';
+                  version.number + '</td><td><span class="badge badge-' + label + '">' +
+                  version.instances.length + '</span></td></tr>';
             })
           });
 
