@@ -8,8 +8,7 @@ Simply clone it, and run it (it's a ruby app built with
 [Sinatra](https://github.com/sinatra/sinatra/));
 
 ```bash
-git clone git@github.com:CompanyBook/vidocq-web.git
-cd vidocq-web
+git clone git@github.com:CompanyBook/vidocq-web.git && cd vidocq-web
 bundle install
 bundle exec ruby app.rb
 ```
