@@ -71,13 +71,12 @@
             $('#status').html('<span class="label label-important">Error fetching data!</span>');
           }
         });
-
       }
 
       $(document).ready(function(){
         $('#services').tooltip({
           selector: "a[rel=tooltip]",
-          placement: "left"
+          placement: "bottom"
         });
         update();
         setInterval(update, 50000);
