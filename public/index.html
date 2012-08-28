@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <link rel="stylesheet" href="bootstrap.min.css"/>
+    <title>Vidocq</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
     <style>
       body {
         margin-top: 50px;
@@ -11,6 +12,10 @@
       }
       th:last-child, td:last-child {
         text-align: right;
+      }
+      .tooltip-inner {
+        max-width: 250px;
+        width: auto;
       }
     </style>
   </head>	
@@ -24,6 +29,7 @@
     </div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
 
     <script>
       function update() {
@@ -45,13 +51,14 @@
                 }
 
                 version.instances.map(function(instance) {
-                  summary += instance.endpoint + '\n';
+                  summary += instance.endpoint + ' \n';
                 });
 
-                content += '<tr><td>' + 
-                    service.name + ' ' + 
-                    version.number + '</td><td><span class="badge badge-' + label + '">' +
-                      version.instances.length + '</span></td></tr>';
+                content += '<tr><td><a href="#" rel="tooltip" title="' +
+                  summary + '">' + 
+                  service.name + ' ' + 
+                  version.number + '</a></td><td><span class="badge badge-' + label + '">' +
+                  version.instances.length + '</span></td></tr>';
               })
             });
 
@@ -68,8 +75,12 @@
       }
 
       $(document).ready(function(){
+        $('#services').tooltip({
+          selector: "a[rel=tooltip]",
+          placement: "left"
+        });
         update();
-        setInterval(update, 5000);
+        setInterval(update, 50000);
       });
     </script>
   </body>
