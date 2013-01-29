@@ -12,3 +12,6 @@ git clone git@github.com:CompanyBook/vidocq-web.git && cd vidocq-web
 bundle install
 bundle exec ruby app.rb
 ```
+
+## Screenshot
+![screenshot](https://dl.dropbox.com/u/2149323/vidocq-web.png)
