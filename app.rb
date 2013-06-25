@@ -3,6 +3,8 @@ require 'vidocq'
 
 ZOOKEEPERS = %w{datanode1.companybook.no datanode2.companybook.no datanode21.companybook.no namenode.companybook.no jobtracker.companybook.no}
 
+set :bind, '0.0.0.0'
+
 get '/' do
   send_file File.join(settings.public_folder, 'index.html')
 end
