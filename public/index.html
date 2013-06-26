@@ -54,7 +54,10 @@
                   summary += instance.endpoint + ' \n';
                 });
 
-                content += '<tr><td><a href="#" rel="tooltip" title="' +
+                content += 
+                  '<tr><td><a target="_new" href="' + 
+                  (version.instances.length > 0 ? version.instances[0].endpoint : '#' ) + 
+                  '" rel="tooltip" title="' +
                   summary + '">' + 
                   service.name + ' ' + 
                   version.number + '</a></td><td><span class="badge badge-' + label + '">' +
